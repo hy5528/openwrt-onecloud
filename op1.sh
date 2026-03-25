@@ -12,7 +12,15 @@
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+# 全部改为稳定的 github 源
+sed -i 's|https://git.openwrt.org/feed/packages.git|https://github.com/openwrt/packages.git|g' feeds.conf.default
+sed -i 's|https://git.openwrt.org/project/luci.git|https://github.com/openwrt/luci.git|g' feeds.conf.default
+sed -i 's|https://git.openwrt.org/feed/routing.git|https://github.com/openwrt/routing.git|g' feeds.conf.default
+sed -i 's|https://git.openwrt.org/feed/telephony.git|https://github.com/openwrt/telephony.git|g' feeds.conf.default
 
+# 添加 lienol 大的 package
+echo 'src-git lienol1 https://github.com/Lienol/openwrt-package.git;main' >>feeds.conf.default
+echo 'src-git lienol2 https://github.com/Lienol/openwrt-package.git;other' >>feeds.conf.default
 # Add a feed source
 #echo 'src-git passwall_packages https://github.com/lxiaya/openwrt-passwall-packages.git;main' >>feeds.conf.default
 #echo 'src-git homeproxy https://github.com/lxiaya/openwrt-homeproxy.git' >>feeds.conf.default
