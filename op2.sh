@@ -10,6 +10,19 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# Modify default IP
-#=================================================
-sed -i "s/192.168.1.1/192.168.2.158/" package/base-files/files/bin/config_generate
+# 修改默认 IP
+sed -i 's/192.168.1.1/192.168.2.158/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
+
+# 修改默认主题
+#sed -i 's/luci-theme-bootstrap/luci-theme-material/g' feeds/luci/collections/luci-light/Makefile
+
+# 修改主机名
+sed -i "s/hostname='.*'/hostname='OneCloud'/g" package/base-files/files/bin/config_generate
+
+# 修改默认时区
+sed -i "s/timezone='.*'/timezone='CST-8'/g" package/base-files/files/bin/config_generate
+sed -i "/.*timezone='CST-8'.*/a\ set system.@system[-1].zonename='Asia/Shanghai'" package/base-files/files/bin/config_generate
+
+# 替换 tailscale 的默认启动脚本和配置
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
