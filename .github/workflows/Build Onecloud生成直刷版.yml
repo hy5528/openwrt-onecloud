@@ -45,7 +45,7 @@ jobs:
           mkdir -p build/output/images
           chmod -R 777 build
           cd build/output/images
-          wget https://github.com/jamyu-li/Armbian-on-B860A-S812-TVBOX/releases/download/20260707/Armbian-unofficial_26.08.0-trunk_Aml-s812-b860a_bookworm_current_6.12.28_minimal_with_emmc.img.xz
+          wget https://github.com/hy5528/openwrt-onecloud/releases/download/2026.04.08-1157/usb.Armbian_20.11_Aml-s812_5.9.0-.USB-WIFI.img.xz
           unxz *.img.xz
         
       - name: Install Dependents
